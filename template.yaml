@@ -44,7 +44,7 @@ Resources:
             Method: post
             RestApiId: !Ref WorkshopApi
             
-    Download:
+  Download:
     Type: AWS::Serverless::Function
     Properties:
       CodeUri: ./src/get_images
