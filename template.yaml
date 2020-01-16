@@ -219,6 +219,8 @@ Resources:
       Policies:
         - StepFunctionsExecutionPolicy:
             StateMachineName: !GetAtt StateMachine.Name
+        - S3CrudPolicy:
+            BucketName: !Ref ImageStore
       Events:
         NewObjects:
           Type: SQS
