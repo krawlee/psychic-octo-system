@@ -1,11 +1,6 @@
 AWSTemplateFormatVersion: 2010-09-09
 Transform: AWS::Serverless-2016-10-31
 
-Globals:
-
-  Runtime: python3.8
-  Handler: index.lambda_handler
-
 Parameters:
 
   AppName:
@@ -20,6 +15,11 @@ Parameters:
   HostedZoneId:
     Type: AWS::SSM::Parameter::Value<String>
     Default: /workshop/hosted_zone_id
+
+Globals:
+
+    Runtime: python3.8
+    Handler: index.lambda_handler
 
 Resources:
 
