@@ -1,6 +1,11 @@
 AWSTemplateFormatVersion: 2010-09-09
 Transform: AWS::Serverless-2016-10-31
 
+Globals:
+
+  Runtime: python3.8
+  Handler: index.lambda_handler
+
 Parameters:
 
   AppName:
@@ -31,8 +36,6 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       CodeUri: ./src/post_image
-      Runtime: python3.8
-      Handler: index.lambda_handler
       Events:
         PostImage:
           Type: Api
@@ -45,8 +48,6 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       CodeUri: ./src/get_images
-      Runtime: python3.8
-      Handler: index.lambda_handler
       Events:
         PostImage:
           Type: Api
