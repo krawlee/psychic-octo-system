@@ -37,7 +37,7 @@ Parameters:
       - eu-west-2
       - eu-central-1
       
-  DeploymentRegion1:
+  DeploymentRegion2:
     Type: String
     Description: Target deployment region.
     AllowedValues:
@@ -62,6 +62,7 @@ Metadata:
         Parameters:
           - AppName
           - DeploymentRegion1
+          - DeploymentRegion2
 
 Resources:
 
@@ -163,7 +164,7 @@ Resources:
           - Type: PLAINTEXT
             Name: TARGET_REGIONS
             Value:
-              Fn::Join: [ ' ', [!Ref DeploymentRegion1], [!Ref DeploymentRegion2]]
+              Fn::Join: [ ' ', [!Ref DeploymentRegion1, !Ref DeploymentRegion2]]
       LogsConfig:
         CloudWatchLogs:
           Status: ENABLED
@@ -262,7 +263,7 @@ Resources:
                 Capabilities: CAPABILITY_IAM,CAPABILITY_AUTO_EXPAND
                 RoleArn: !GetAtt CloudFormationRole.Arn
                 StackName: !Sub ${AppName}-subzero-workshop
-                TemplatePath: !Sub 'BuildArtifact::packaged-${DeploymentRegion1}.yaml'
+                TemplatePath: !Sub 'BuildArtifact::packaged-${DeploymentRegion2}.yaml'
               RunOrder: 2
 
   PipelineWebHook:
